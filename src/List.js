@@ -17,21 +17,21 @@ function List() {
 		//  setLoading(false);
 		});
 	});
-
+   
 
 	
   
 	return (
-	  <Table>
-		<TableHead>
-		  <TableRow>
-			<TableCell>Unique ID</TableCell>
+	  <Table className='tableList'>
+		<TableHead className='table-thead-list'>
+		  <TableRow>  
+			<TableCell className='width50'>Unique ID</TableCell>
 			<TableCell>First Name</TableCell>
 			<TableCell>Last Name</TableCell>
 			<TableCell>Phone Number</TableCell>
 			<TableCell>Mailing Address</TableCell>
 			<TableCell>Billing Address</TableCell>
-			<TableCell>What car do you own</TableCell>
+			<TableCell>What car do you own</TableCell> 
 			<TableCell>From When</TableCell>
 			<TableCell>Is it on finance</TableCell>
 			<TableCell>How much finance</TableCell>
@@ -41,8 +41,11 @@ function List() {
 		</TableHead>
 		<TableBody>
 		  {data.map(item => (
-			<TableRow key={item._id}>
-			<TableCell>{item._id}</TableCell>
+			<TableRow key={item._id} >  
+			<TableCell className='width50'>
+				   {item._id.substring(0,7)}###
+		    
+				</TableCell>
 			<TableCell>{item.first_name}</TableCell>
 			<TableCell>{item.last_name}</TableCell>
 			<TableCell>{item.phone}</TableCell>

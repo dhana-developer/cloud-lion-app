@@ -5,6 +5,7 @@ import MultiStepEditForm from "./MultiStepEditForm";
 import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import List from "./List.js";
+import Navbar from "./Navbar.js";
 // import EditForm from "./EditForm.js";
 
       
@@ -12,6 +13,7 @@ import List from "./List.js";
 export default function App() {
   return (
     <div className="App">
+      <Navbar />
        <BrowserRouter>
       <Routes>
         <Route path="/list" element={<List />}> </Route>

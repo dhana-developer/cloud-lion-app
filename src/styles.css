@@ -1,67 +1,107 @@
 * {
-	margin: 0;
-	padding: 0;
-  }
-  html {
-	font-size: 18px;
-  }
-  .App {
-	padding: 50px;
-  }
-  .details__wrapper {
-	max-width: 400px;
-	margin: 10em auto;
-  }
-  .form__item {
-	margin-bottom: 1.6em;
-  }
-  label,
-  input {
-	display: block;
-	width: 100%;
-  }
-  .d-flex {
-	display: flex !important;
-  }
-  
-  .justify-content-end {
-	justify-content: flex-end !important;
-  }
-  
-  .justify-content-between {
-	justify-content: space-between !important;
-  }
-  .input__error input {
-	border-color: red;
-  }
-  .error__feedback {
-	color: red;
-  }
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 18px;
+}
+.App {
+  padding: 50px;
+}
+.details__wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 10em auto;
+}
+.form__item {
+  margin-bottom: 1.6em;
+}
+label,
+input {
+  display: block;
+  width: 100%;
+}
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.input__error input {
+  border-color: red;
+}
+.error__feedback {
+  color: red;
+}
 .ant-steps {
   margin-top: 60px !important;
   width: 80% !important;
-    text-align: center !important;
-}   
-
-.details__wrapper { 
-  margin: 80px 28em 10em auto;
+  text-align: center !important;
 }
 
-.ant-input-number{
+.details__wrapper {  
+  margin: 80px 32em 10em auto;
+}
+
+.ant-input-number {
   width: 403px !important;
 }
 
-.duplicate_address_field{
+.duplicate_address_field {
   width: 14px !important;
-  margin-right: 9px !important; 
+  margin-right: 9px !important;
 }
 
-.duplicate_address_label{
+.duplicate_address_label {
   display: flex !important;
 }
-.duplicate{
+.duplicate {
   margin-bottom: 20px !important;
 }
-.hide{
+.hide {
   display: none;
 }
+.navRow{
+  height: 100px;
+  background: #ede2e2;
+}  
+.nav-col-2{
+  padding-top: 25px;
+    font-size: 31px;
+}
+
+.nav-class-add{
+  padding-left: 60px;
+  text-decoration: auto;  
+}
+
+.nav-class-list {
+  padding-left: 140px;
+  text-decoration: auto;
+}
+
+.App {
+  padding: 0px !important;
+}
+
+.tableList {
+  margin: 30px !important;
+  border: 1px solid #161617;
+}
+.table-thead-list {
+  font-weight: bold;
+  background: #a7aeb5;
+}
+
+.MuiTable-root {
+  width: 95% !important;
+}
+
+.width50{
+  width: 50px !important;
+}  

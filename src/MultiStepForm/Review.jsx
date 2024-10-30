@@ -12,17 +12,24 @@ const Review = () => {
 		let phone = details.phone;
 		let billing_address = details.billing_address;
 		let mailing_address = details.mailing_address;
+		let q1 = address.q1;
+		let q2 = address.q2;     
+		let q3 = address.q3;
+		let q4 = address.q4;
+		let q5 = address.q5;
 
 		e.preventDefault();  
 		try {
 		  const response = await fetch('http://localhost:9000/customers/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			 body: JSON.stringify({ first_name, last_name, phone,billing_address,mailing_address }),
+			 body: JSON.stringify({ first_name, last_name, phone,billing_address,mailing_address,q1,q2,q3,q4,q5 }),
 		  });
 		  const data = await response.json();
 		  console.log(data);
-		} catch (err) {
+		  alert("New customer is Created.")
+		  window.location.reload();
+		} catch (err) {   
 		  console.error(err);
 		}
 	  };

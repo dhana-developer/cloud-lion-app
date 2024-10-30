@@ -8,19 +8,22 @@ const Review = () => {
 	const [error, setError] = useState(null);
 	let pathArray = window.location.pathname.split('/');
 	let id = pathArray[2];
+	
+	
+	 
 	const { details, address, prev } = useContext(MultiStepFormEditContext);
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e) => {  
 		console.log("fsfdddddddddd",details)
-		let first_name = "johnnn";
+		let first_name = details.first_name
 		let last_name = details.last_name;    
 		let phone = details.phone;
 		let billing_address = details.billing_address;
 		let mailing_address = details.mailing_address;
-		let q1 = details.q1; 
-		let q2 = details.q2; 
-		let q3 = details.q3; 
-		let q4 = details.q4; 
-		let q5 = details.q5; 
+		let q1 = address.q1;   
+		let q2 = address.q2; 
+		let q3 = address.q3; 
+		let q4 = address.q4; 
+		let q5 = address.q5; 
 
 		console.log(first_name); 
 
@@ -35,6 +38,10 @@ const Review = () => {
 		  console.log(data);  
 		  
 		  setLoading(false);
+
+		  alert("Custemer details is Updated!!!.")
+		  window.location.reload();
+
 		} catch (error) {
 		  setError(error.message);
 		  setLoading(false);
@@ -59,9 +66,9 @@ const Review = () => {
 		  <p>From When : {address.q2}</p>  
 		  <p>Is it on finance : {address.q3}</p>
 		  <p>How much finance : {address.q4}</p>
-		  <p>How much EMI paid per month ?  {address.q5}</p>
+		  <p>How much EMI paid per month :  {address.q5}</p>
      
-          
+            
           <div
             className={
               "form__item button__items d-flex justify-content-between"

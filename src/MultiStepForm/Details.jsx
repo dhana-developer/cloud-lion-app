@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { Formik } from "formik";
 import { Button } from "antd";
 import { Input, InputNumber,Field } from "formik-antd";
@@ -7,24 +7,27 @@ import MultiStepFormContext from "./MultiStepFormContext";
 
 const Details = () => {
   const { details, setDetails, next } = useContext(MultiStepFormContext);
-  const [billingAddress, setBillingAddress] = React.useRef({}); 
+  const { billingAddress, setBillingAddress } = React.useRef({});
+  const { mailingAddress, setMailingAddress} = React.useRef({});
+  const { sameAsBilling, setSameAsBilling } = useState(false);  
+  const [customerDetails, setCustomerDetails] = useState({});
+  const [isMaillingSameAsBilling, setIsMaillingSameAsBilling] = useState(false);
 
-  const mailingAddress = React.useRef({});
+  // const handleSameAsBillingChange = (e) => {
+  //   setSameAsBilling(e.target.checked);
+  //   if (e.target.checked) {
+  //     mailingAddress.current.value = billingAddress.current.value;
+  //   } else {
+  //     mailingAddress.current.value = '';
+  //   }
+  // };
 
-  const handleSameAsBillingChange = (e) => {
-    if (e.target.checked) {
-      mailingAddress.current.value = billingAddress.current.value;
-    } else {
-      mailingAddress.current.value = '';
-    }
-  };
-
-  const handleBillingAddressChange = (e) => {
-    billingAddress.current.value = e.target.value;
-    if (document.getElementById('sameAsBilling').checked) {
-      mailingAddress.current.value = e.target.value;
-    }
-  };
+  // const handleBillingAddressChange = (e) => {
+  //   billingAddress.current.value = e.target.value;
+  //   if (sameAsBilling) {
+  //     mailingAddress.current.value = e.target.value;
+  //   }
+  // };
 
 //   const [customer, setCustomer] = useState({
 //     email: '',
@@ -41,9 +44,30 @@ const Details = () => {
 //       billing_address: prevCustomer.mailing_address,
 //     }));
 //   };
+
+const onChangeCheckbox = (e, values, setFieldValue) => {
+  const target = e.target;
+  const isChecked = target.checked;
+  let newVal = "";
+  if (isChecked) {
+    newVal = values.mailing_address;
+  setIsMaillingSameAsBilling(true)
+  } else setIsMaillingSameAsBilling(false)
+  setFieldValue("billing_address", newVal);
+};
+
+const onFormvalueChange = (e) => {
+  const target = e.target;
+  const name = target.getAttribute("name");
+  const value = target.value;
+  const formVal = { [name]: value };
+  setCustomerDetails((prev) => ({ ...prev, ...formVal }));
+};
+
   return (
     <Formik
       initialValues={details}
+      enableReinitialize
       onSubmit={(values) => {
         setDetails(values);
         next();
@@ -62,7 +86,7 @@ const Details = () => {
         return errors;
       }}
     >
-      {({ handleSubmit, errors }) => {
+        {({ handleSubmit, errors, values, setFieldValue }) => {
         return (
           <div className={"details__wrapper"}>
             <div className={`form__item ${errors.first_name && "input__error"}`}>
@@ -94,18 +118,22 @@ const Details = () => {
 			{/* <button onClick={handleDuplicateAddress}>Duplicate Address</button> */}
 			<div className="duplicate">
 			<label className="duplicate_address_label">
-              <Field type="checkbox" name="checked" value="One"  ref={billingAddress}
-        onChange={handleBillingAddressChange} className="duplicate_address_field"  />
+      <Field
+                  type="checkbox"
+                  name="checked"
+                  value="One"
+                  className="duplicate_address_field"
+                  onClick={(e) => onChangeCheckbox(e, values, setFieldValue)}
+                />
               Use Mailing Address as Billing Address
             </label>
 			</div>  
-			<div       
+			<div        
               className={`form__item ${errors.billing_address && "input__error"}`}
             > 
  
               <label>Billing Address *</label>
-              <Input name={"billing_address"} placeholder="Enter billing address"  id="sameAsBilling"
-        onChange={handleSameAsBillingChange} />   
+              <Input name={"billing_address"} placeholder="Enter billing address" 			disabled={isMaillingSameAsBilling}  />   
               <p className={"error__feedback"}>{errors.billing_address}</p>
             </div>
              
