@@ -26,7 +26,7 @@ function EditForm() {
 		const fetchData = async () => {
 		  try {
 		
-			const response = await fetch(`http://localhost:9000/customers/${id}`);
+			const response = await fetch(`/customers/${id}`);
 			const data = await response.json();  
 			setFirstname(data.first_name);
 			setLastname(data.last_name);
@@ -56,7 +56,7 @@ function EditForm() {
 		e.preventDefault();
 		setLoading(true);
 		try {
-		  const response = await fetch(`http://localhost:9000/customers/${id}`, {
+		  const response = await fetch(process.env.X_ZOHO_CATALYST_LISTEN_PORT+`/customers/${id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ first_name, last_name,phone,mailing_address,billing_address,q1,q2,q3,q4,q5 }),

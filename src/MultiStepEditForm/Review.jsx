@@ -25,11 +25,11 @@ const Review = () => {
 		let q4 = address.q4; 
 		let q5 = address.q5; 
 
-		console.log(first_name); 
+		console.log(first_name);     
 
 		e.preventDefault();  
 		try {
-			const response = await fetch(`http://localhost:9000/customers/${id}`, {
+			const response = await fetch(process.env.X_ZOHO_CATALYST_LISTEN_PORT+`/customers/${id}`, {
 				method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			 body: JSON.stringify({ first_name, last_name, phone,billing_address,mailing_address,q1,q2,q3,q4,q5 }),

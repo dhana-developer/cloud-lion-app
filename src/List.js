@@ -11,13 +11,13 @@ function List() {
 //	const [ setLoading] = useState(true);
   
 	useEffect(() => {
-	  axios.get('http://localhost:9000/customers/')
+	  axios.get(process.env.X_ZOHO_CATALYST_LISTEN_PORT+'/customers/')
 		.then(response => {
 		  setData(response.data);
 		//  setLoading(false);
 		});
 	});
-   
+     
 
 	
   
