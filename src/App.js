@@ -15,6 +15,7 @@ export default function App() {
     <div className="App">
       <Navbar />
       <List /> 
+      <MultiStepForm />  
        <BrowserRouter>  
       <Routes>
         <Route path="/" element={<List />}> </Route>
