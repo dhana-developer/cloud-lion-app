@@ -11,7 +11,7 @@ function List() {
 //	const [ setLoading] = useState(true);
   
 	useEffect(() => {
-	  axios.get(process.env.X_ZOHO_CATALYST_LISTEN_PORT+'/customers/')
+	  axios.get("http://192.168.2.24:9000"+'/customers/')
 		.then(response => {
 		  setData(response.data);
 		//  setLoading(false);

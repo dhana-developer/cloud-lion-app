@@ -27,7 +27,7 @@ const Details = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(process.env.X_ZOHO_CATALYST_LISTEN_PORT+`/customers/${id}`);
+        const response = await fetch("http://192.168.2.24:9000"+`/customers/${id}`);
         const data = await response.json();
         /*  setFirstname(data.first_name);
         setLastname(data.last_name);
