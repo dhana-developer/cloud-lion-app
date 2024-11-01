@@ -15,8 +15,8 @@ export default function App() {
     <div className="App">
 
       <Navbar />
-      <List /> 
-      <MultiStepForm />  
+      {/* <List /> 
+      <MultiStepForm />   */}
        <HashRouter>  
       <Routes>
         <Route path="/" element={<List />}> </Route>
